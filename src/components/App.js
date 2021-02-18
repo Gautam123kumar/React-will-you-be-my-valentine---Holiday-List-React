@@ -1,50 +1,72 @@
-
 import React, { Component, useState } from "react";
 import '../styles/App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
+const App = () => {
+  
+  const cityList = [{ name: 'Goa', country: 'India' },
+  { name: 'Amsterdam', country: 'Netherlands' },
+  { name: 'New York', country: 'USA' },
+  { name: 'Darjeeling', country: 'India' },
+  { name: 'Tokyo', country: 'Japan' },
+  { name: 'Lonavala', country: 'India' },
+  ];
+  const indiaCity  = cityList.filter((item, index) => {
+    return item.country === "India";
+  });
+  let array = [];
+  const finalindiaCity = indiaCity .map((element, index) => {
+    if (!array.includes(element.name)) {
+      array.push(element.name);
+      return <li key={`location1 ${index + 1}`}>{element.name}</li>;
+    }
+  });
 
-    this.cityList = [{ name: 'Goa', country: 'India' },
-    { name: 'Amsterdam', country: 'Netherlands' },
-    { name: 'New York', country: 'USA' },
-    { name: 'Darjeeling', country: 'India' },
-    { name: 'Tokyo', country: 'Japan' },
-    { name: 'Lonavala', country: 'India' },
-    { name: 'Brandenburg Gate', country: 'Germany' },
-    { name: 'Reichstag Building', country: 'Germany' },
-    { name: 'Museum Island', country: 'Germany' },
-    { name: 'Munnar', country: 'India' },
-    { name: 'Leh Ladakh', country: 'India' },
-    { name: 'Goa', country: 'India' },
-    { name: 'Agra', country: 'India' },
-    { name: 'Dalhousie', country: 'India' },
-    { name: 'Coorg', country: 'India' },
-    { name: 'Rome', country: 'Italy' },
-    { name: 'Milan', country: 'Italy' },
-    { name: 'Venice', country: 'Italy' },
-    { name: 'Varanasai', country: 'India' },
-    { name: 'Jaipur', country: 'India' },
-    { name: 'The Hofburg', country: 'Austria' },
-    { name: 'Belvedere Palace', country: 'Austria' },
-    { name: 'St. Stephen Cathedral', country: 'Austria' },
-    { name: 'Kahna National Park', country: 'India' },
-    { name: 'Amritsar', country: 'India' },
-    { name: 'Mussoorie', country: 'India' },
-    { name: 'Mount Abu', country: 'India' },
-    { name: 'Tirupati', country: 'India' },
-    ]
-  }
+  const netherlandCity = cityList.filter((item,index)=>{
+    return item.country === "Netherlands"
+  })
+  console.log(netherlandCity)
+  let netherlandArray = [];
+  const finalnetherlandCity = netherlandCity.map((temp,index)=>{
+    if(!netherlandArray.includes(temp.name)){
+      netherlandArray.push(temp.name);
+      return <li key={`location2 ${index + 1}`}>{temp.name}</li>
+    }
+  });
 
-  render() {
-    return (
-      <div id="main">
-        {/* Do not remove the main div */}
-      </div>
-    )
-  }
-}
+  const usaCity = cityList.filter((item,index)=>{
+    return item.country === "USA";
+  });
+  let usaArray = [];
+  const finalUsaCity = usaCity.map((temp,index)=>{
+    if(!usaArray.includes(temp.name)){
+      usaArray.push(temp.name);
+      return <li key={`location3 ${index + 1}`}>{temp.name}</li>
+    }
+  });
 
+  const japanCity = cityList.filter((item,index)=>{
+    return item.country === "Japan";
+  });
 
+  let japanArray = [];
+  const finalJapanCity = japanCity.map((temp,index)=>{
+    if(!japanArray.includes(temp.name)){
+      japanArray.push(temp.name);
+      return <li key={`location4 ${index + 1}`}>{temp.name}</li>
+    }
+  })
+
+  return (
+    <div id="main">
+      <ol>
+        {finalindiaCity}
+        {finalnetherlandCity}
+        {finalUsaCity}
+        {finalJapanCity}
+
+      </ol>
+      
+    </div>
+  );
+};
 export default App;
