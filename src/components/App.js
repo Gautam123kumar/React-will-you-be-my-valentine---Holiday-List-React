@@ -17,7 +17,7 @@ const App = () => {
   const finalindiaCity = indiaCity .map((element, index) => {
     if (!array.includes(element.name)) {
       array.push(element.name);
-      return <li key={`location1 ${index + 1}`}>{element.name}</li>;
+      return <li key={`location ${index + 1}`}>{element.name}</li>;
     }
   });
 
@@ -29,7 +29,7 @@ const App = () => {
   const finalnetherlandCity = netherlandCity.map((temp,index)=>{
     if(!netherlandArray.includes(temp.name)){
       netherlandArray.push(temp.name);
-      return <li key={`location2 ${index + 1}`}>{temp.name}</li>
+      return <li key={`location ${index + 1}`}>{temp.name}</li>
     }
   });
 
@@ -40,7 +40,7 @@ const App = () => {
   const finalUsaCity = usaCity.map((temp,index)=>{
     if(!usaArray.includes(temp.name)){
       usaArray.push(temp.name);
-      return <li key={`location3 ${index + 1}`}>{temp.name}</li>
+      return <li key={`location ${index + 1}`}>{temp.name}</li>
     }
   });
 
@@ -52,7 +52,7 @@ const App = () => {
   const finalJapanCity = japanCity.map((temp,index)=>{
     if(!japanArray.includes(temp.name)){
       japanArray.push(temp.name);
-      return <li key={`location4 ${index + 1}`}>{temp.name}</li>
+      return <li key={`location ${index + 1}`}>{temp.name}</li>
     }
   })
 
