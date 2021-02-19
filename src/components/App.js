@@ -1,72 +1,55 @@
 import React, { Component, useState } from "react";
 import '../styles/App.css';
 
-const App = () => {
-  
-  const cityList = [{ name: 'Goa', country: 'India' },
-  { name: 'Amsterdam', country: 'Netherlands' },
-  { name: 'New York', country: 'USA' },
-  { name: 'Darjeeling', country: 'India' },
-  { name: 'Tokyo', country: 'Japan' },
-  { name: 'Lonavala', country: 'India' },
-  ];
-  const indiaCity  = cityList.filter((item, index) => {
-    return item.country === "India";
-  });
-  let array = [];
-  const finalindiaCity = indiaCity .map((element, index) => {
-    if (!array.includes(element.name)) {
-      array.push(element.name);
-      return <li key={`location ${index + 1}`}>{element.name}</li>;
-    }
-  });
+class App extends Component {
+    constructor(props) {
+    super(props)
 
-  const netherlandCity = cityList.filter((item,index)=>{
-    return item.country === "Netherlands"
-  })
-  console.log(netherlandCity)
-  let netherlandArray = [];
-  const finalnetherlandCity = netherlandCity.map((temp,index)=>{
-    if(!netherlandArray.includes(temp.name)){
-      netherlandArray.push(temp.name);
-      return <li key={`location ${index + 1}`}>{temp.name}</li>
-    }
-  });
+    this.cityList = [{ name: 'Goa', country: 'India' },
+    { name: 'Amsterdam', country: 'Netherlands' },
+    { name: 'New York', country: 'USA' },
+    { name: 'Darjeeling', country: 'India' },
+    { name: 'Tokyo', country: 'Japan' },
+    { name: 'Lonavala', country: 'India' },
+    ];
+    this.list2=this.FilterElement();
+    this.liList=this.wrap();
+  }
 
-  const usaCity = cityList.filter((item,index)=>{
-    return item.country === "USA";
-  });
-  let usaArray = [];
-  const finalUsaCity = usaCity.map((temp,index)=>{
-    if(!usaArray.includes(temp.name)){
-      usaArray.push(temp.name);
-      return <li key={`location ${index + 1}`}>{temp.name}</li>
-    }
-  });
+  wrap(){
+      console.log(this.list2);
+    let c=0;
+    const wrapcity=this.list2.map((city)=>{
+        let keyloc='location';
+        return(
+            <li key={keyloc+(c++)}>{city}</li>
+        );
+    });
+    return(
+        <ol>{wrapcity}</ol>
+    )
+  }
+ 
+  FilterElement() {
+    let indCity=[];
+    this.cityList.forEach((city)=>{
+        if(city.country=='India' && !indCity.includes(city.name)){
+            indCity.push(city.name);
+        }
+            
+    });
+    
+    return indCity;
+  }
 
-  const japanCity = cityList.filter((item,index)=>{
-    return item.country === "Japan";
-  });
+  render() {
+    return (
+      <div id="main">
+        {this.liList}
+      </div>
+    )
+  }
+}
 
-  let japanArray = [];
-  const finalJapanCity = japanCity.map((temp,index)=>{
-    if(!japanArray.includes(temp.name)){
-      japanArray.push(temp.name);
-      return <li key={`location ${index + 1}`}>{temp.name}</li>
-    }
-  })
 
-  return (
-    <div id="main">
-      <ol>
-        {finalindiaCity}
-        {finalnetherlandCity}
-        {finalUsaCity}
-        {finalJapanCity}
-
-      </ol>
-      
-    </div>
-  );
-};
 export default App;
